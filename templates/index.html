@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summe Berechnen</title>
+  </head>
+  <body>
+    <h1>Summe von zwei Zahlen</h1>
+    <form method="POST">
+      <label for="num1">Zahl 1:</label>
+      <input type="text" id="num1" name="num1" required />
+      <br /><br />
+      <label for="num2">Zahl 2:</label>
+      <input type="text" id="num2" name="num2" required />
+      <br /><br />
+      <button type="submit">Berechnen</button>
+    </form>
+
+    {% if summe is not none %}
+    <h2>Summe: {{ summe }}</h2>
+    {% endif %} {% if error %}
+    <h3 style="color: red">{{ error }}</h3>
+    {% endif %}
+  </body>
+</html>

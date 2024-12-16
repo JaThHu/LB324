@@ -1,0 +1,21 @@
+name: Update Issue Status
+
+on:
+  push:
+    branches:
+      - main # Der Workflow wird ausgelöst, wenn ein Commit in den `main`-Branch gepusht wird.
+
+jobs:
+  link-issues:
+    runs-on: ubuntu-latest # Der Workflow läuft auf einer Ubuntu-Umgebung.
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3 # Hier wird der Code aus deinem Repository geladen.
+
+      - name: Update related issues
+        uses: peter-evans/create-or-update-comment@v2 # Diese Action fügt einen Kommentar zum Issue hinzu.
+        with:
+          issue-number: ${{ github.event.inputs.issue_number }} # Verknüpft das Issue anhand der Eingabewerte.
+          body: |
+            Die Änderungen aus diesem Commit schließen das Issue. 🎉  # Kommentar, der ins Issue gepostet wird.
